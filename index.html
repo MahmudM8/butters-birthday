@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butter's Birthday💖</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        .coder-credit {
+           text-align: center;
+           padding: 15px;
+           font-size: 0.8rem;
+           color: rgba(0, 0, 0, 0.4);
+           font-family: 'Montserrat', sans-serif;
+           margin-top: 40px;
+        }
+
+       .coder-credit p {
+           display: inline-block;
+           padding: 5px 15px;
+           border-radius: 20px;
+           background: rgba(255, 255, 255, 0.3);
+        }
+        :root {
+            --pink-light: #FFE6EE;
+            --pink-medium: #FF9EB5;
+            --pink-dark: #FF6B8B;
+            --pink-accent: #FFD1DC;
+            --gold: #FFD700;
+            
+            /* Responsive font sizes */
+            --h1-size: clamp(2.5rem, 5vw, 4rem);
+            --h2-size: clamp(1.8rem, 4vw, 2.5rem);
+            --subtitle-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            --body-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--pink-light);
+            color: #555;
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: var(--body-size);
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, var(--pink-medium), var(--pink-dark));
+            color: white;
+            text-align: center;
+            padding: clamp(40px, 8vw, 80px) 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: var(--h1-size);
+            margin-bottom: clamp(15px, 3vw, 20px);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .subtitle {
+            font-size: var(--subtitle-size);
+            margin-bottom: clamp(20px, 4vw, 30px);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Floating Elements */
+        .floating {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .heart {
+            color: var(--pink-dark);
+            font-size: clamp(18px, 3vw, 24px);
+        }
+
+        .flower {
+            color: var(--pink-accent);
+            font-size: clamp(20px, 3.5vw, 28px);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: clamp(25px, 5vw, 40px) 20px;
+        }
+
+        section {
+            margin-bottom: clamp(40px, 6vw, 60px);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: var(--h2-size);
+            color: var(--pink-dark);
+            text-align: center;
+            margin-bottom: clamp(25px, 4vw, 40px);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: clamp(60px, 10vw, 100px);
+            height: 3px;
+            background: var(--pink-medium);
+            margin: clamp(10px, 2vw, 15px) auto;
+        }
+
+        /* Video Grid Section */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: clamp(15px, 2.5vw, 20px);
+            margin: clamp(20px, 4vw, 30px) auto;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            border-radius: clamp(10px, 2vw, 15px);
+            overflow: hidden;
+            box-shadow: 0 clamp(5px, 1.5vw, 15px) clamp(10px, 3vw, 30px) rgba(255, 105, 140, 0.3);
+            aspect-ratio: 4/3;
+        }
+
+        .journey-video, .video-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-container:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .play-button {
+            width: clamp(40px, 8vw, 50px);
+            height: clamp(40px, 8vw, 50px);
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .play-button i {
+            color: var(--pink-dark);
+            font-size: clamp(16px, 3vw, 20px);
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Photo Grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+            gap: clamp(15px, 2.5vw, 20px);
+            margin-top: clamp(20px, 3vw, 30px);
+        }
+
+        .photo-card {
+            position: relative;
+            border-radius: clamp(8px, 1.5vw, 10px);
+            overflow: hidden;
+            box-shadow: 0 clamp(3px, 1vw, 5px) clamp(8px, 2vw, 15px) rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            aspect-ratio: 1/1;
+        }
+
+        .photo-card:hover {
+            transform: translateY(clamp(-5px, -1vw, -10px));
+            box-shadow: 0 clamp(8px, 2vw, 15px) clamp(15px, 3vw, 30px) rgba(255, 105, 140, 0.3);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
+            padding: clamp(12px, 2vw, 20px) clamp(10px, 1.5vw, 15px) clamp(5px, 1vw, 10px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+        }
+
+        .photo-card:hover .photo-caption {
+            opacity: 1;
+        }
+
+        /* Love Letter Section */
+        .love-letter {
+            background: white;
+            border-radius: clamp(10px, 2vw, 15px);
+            padding: clamp(20px, 4vw, 40px);
+            box-shadow: 0 clamp(5px, 1.5vw, 10px) clamp(15px, 3vw, 30px) rgba(255, 158, 181, 0.2);
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .love-letter::before {
+            content: '';
+            position: absolute;
+            top: clamp(-3px, -0.8vw, -5px);
+            left: clamp(-3px, -0.8vw, -5px);
+            right: clamp(-3px, -0.8vw, -5px);
+            bottom: clamp(-3px, -0.8vw, -5px);
+            background: linear-gradient(45deg, var(--pink-medium), var(--pink-accent), var(--gold));
+            z-index: -1;
+            border-radius: clamp(12px, 2.5vw, 20px);
+            opacity: 0.7;
+            filter: blur(clamp(5px, 1.5vw, 10px));
+            animation: borderGlow 8s infinite alternate;
+        }
+
+        .love-letter p {
+            margin-bottom: clamp(15px, 2.5vw, 20px);
+            font-size: var(--body-size);
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--pink-dark);
+            text-align: right;
+            margin-top: clamp(20px, 3vw, 30px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--pink-dark), var(--pink-medium));
+            color: white;
+            text-align: center;
+            padding: clamp(20px, 4vw, 30px) 20px;
+            margin-top: clamp(40px, 6vw, 60px);
+        }
+
+        .footer-message {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: clamp(10px, 2vw, 20px);
+            right: clamp(10px, 2vw, 20px);
+            background: white;
+            border-radius: 50px;
+            padding: clamp(6px, 1.5vw, 10px) clamp(8px, 2vw, 15px);
+            box-shadow: 0 clamp(3px, 1vw, 5px) clamp(8px, 2vw, 15px) rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: clamp(5px, 1.5vw, 10px);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .music-control {
+            background: var(--pink-medium);
+            color: white;
+            border: none;
+            width: clamp(32px, 8vw, 40px);
+            height: clamp(32px, 8vw, 40px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .music-control:hover {
+            background: var(--pink-dark);
+            transform: scale(1.1);
+        }
+
+        .song-title {
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            margin-right: clamp(5px, 1.5vw, 10px);
+            max-width: clamp(100px, 20vw, 150px);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(clamp(-10px, -2vw, -20px)) rotate(5deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(clamp(-15px, -3vw, -30px));
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(clamp(15px, 3vw, 30px));
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes borderGlow {
+            0% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.5; }
+        }
+
+        /* Mobile-specific improvements */
+        .touch-optimized {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .touch-optimized:active {
+            transform: scale(0.97);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .music-player {
+                width: auto;
+            }
+            
+            .song-title {
+                display: inline;
+            }
+            
+            /* Improve touch targets */
+            .play-button, .music-control {
+                min-width: 44px;
+                min-height: 44px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-grid, .photo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .music-player {
+                width: auto;
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .floating {
+                /* Reduce number of floating elements on very small screens */
+                display: none;
+            }
+            
+            .floating:nth-child(-n+4) {
+                display: block;
+            }
+        }
+        
+        /* Large screen optimizations */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1400px;
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 1200px;
+            }
+            
+            .photo-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Birthday Greeting -->
+    <header>
+        <!-- Floating decorative elements -->
+        <div class="floating heart" style="top:10%; left:5%;">❤️</div>
+        <div class="floating flower" style="top:80%; left:15%;">🌸</div>
+        <div class="floating heart" style="top:20%; right:10%;">💖</div>
+        <div class="floating flower" style="top:70%; right:20%;">🌹</div>
+
+        <div class="header-content">
+            <h1>Happy Birthday Butter!</h1>
+            <p class="subtitle">-Happy Birthday Love</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Baby Pictures Section -->
+        <section id="baby-pictures">
+            <h2>Pure Beauty</h2>
+            <div class="photo-grid">
+                <!-- Replace with actual baby pictures -->
+                <div class="photo-card touch-optimized">
+                    <img src="IMG_2751.JPG" alt="Baby Mubeenarh">
+                    <div class="photo-caption">So perfect</div>
+                </div>
+                <div class="photo-card touch-optimized">
+                    <img src="IMG_2742.JPG" alt="Baby Mubeenarh">
+                    <div class="photo-caption">My Precious One</div>
+                </div>
+                <div class="photo-card touch-optimized">
+                    <img src="IMG_1519.JPG" alt="Baby Mubeenarh">
+                    <div class="photo-caption">Perfection</div>
+                </div>
+                <div class="photo-card touch-optimized">
+                    <img src="IMG_1515.JPG" alt="Baby Mubeenarh">
+                    <div class="photo-caption">Pure joy</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solo Pictures Section -->
+        <section id="solo-pictures">
+            <h2>My Baby Girl</h2>
+            <div class="photo-grid">
+                <!-- Replace with actual solo pictures -->
+                <div class="photo-card touch-optimized">
+                    <img src="IMG_0839.jpg" alt="Lily">
+                    <div class="photo-caption">Your Beautiful smile</div>
+                </div>
+                <div class="photo-card touch-optimized">
+                    <img src="IMG_1516.JPG" alt="Lily">
+                    <div class="photo-caption">Natural beauty</div>
+                </div>
+                <div class="photo-card touch-optimized">
+                    <img src="IMG_1324.JPG" alt="Lily">
+                    <div class="photo-caption">Elegant and graceful</div>
+                </div>
+                <div class="photo-card touch-optimized">
+                    <img src="IMG_1152.JPG" alt="Lily">
+                    <div class="photo-caption">Your sparkling eyes</div>
+                </div>
+            </div>
+        </section>
+
+         <div class="container">
+        
+       
+
+        <!-- Solo Pictures Section -->
+        <section id="solo-pictures">
+            <h2>Us</h2>
+            <div class="photo-grid">
+                <!-- Replace with actual solo pictures -->
+                <div class="photo-card touch-optimized">
+                    <img src="IMG_0737.JPG" alt="Lily">
+                    <div class="photo-caption">Your Beautiful smile</div>
+                </div>
+                <div class="photo-card touch-optimized">
+                    <img src="IMG_1327.JPG" alt="Lily">
+                    <div class="photo-caption">Natural beauty</div>
+                </div>
+                <div class="photo-card touch-optimized">
+                    <img src="IMG_1542.JPG" alt="Lily">
+                    <div class="photo-caption">Elegant and graceful</div>
+                </div>
+                <div class="photo-card touch-optimized">
+                    <img src="IMG_1543.JPG" alt="Lily">
+                    <div class="photo-caption">Your sparkling eyes</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Couple Pictures Section with Video -->
+        <section id="couple-pictures">
+            <h2>Momma</h2>
+            
+            <!-- Video Grid -->
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-container touch-optimized">
+                    <video class="journey-video" autoplay muted loop playsinline>
+                        <source src="1F456737-4BB4-48E6-8AA2-5FB58E18DCCF.MOV" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay">
+                        <div class="play-button" data-video="video1">
+                            <i class="fas fa-pause"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="video-container touch-optimized">
+                    <video class="journey-video" autoplay muted loop playsinline>
+                        <source src="A721518B-EE51-4B0E-A58B-C6418D2412A4.MOV" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay">
+                        <div class="play-button" data-video="video2">
+                            <i class="fas fa-pause"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="video-container touch-optimized">
+                    <video class="journey-video" autoplay muted loop playsinline>
+                        <source src="CB36CD11-9042-463A-8803-C3C05B2BDC55.MP4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay">
+                        <div class="play-button" data-video="video3">
+                            <i class="fas fa-pause"></i>
+                        </div>
+                    </div>
+                </div>
+                
+               
+            </div>
+        </section>
+
+        <!-- Love Letter Section -->
+        <section id="love-letter">
+            <div class="love-letter">
+                <h2>Butter❤️</h2>
+                <p>My Dearest Love Happy Birthday Butter! Today, I'm overflowing with gratitude for you my beautiful, strong, and radiant girlfriend who lights up my world like no other. You're a blessing, a gift from Allah, and every moment with you feels like a treasure I'll cherish forever.</p>
+                <p>Your kindness, your laughter, your resilience they paint my days with joy and make my heart sing. You're not just my love you're a force, a fierce and incredible woman who faces the world with courage and grace. I'm in awe of your strength, your spirit, and the way you make everyone around you feel so loved.</p>
+                <p> I pray that Allah grants you every desire of your heart, that He surrounds you with His infinite mercy, and that He blesses your new age with health, happiness, and endless opportunities to shine. Let's celebrate you today, my queen! Let's dance through this life together, hand in hand, chasing dreams and making memories. I pray Allah keeps you safe, lifts you higher, and makes every step you take a testament to His love and guidance. </p>
+                <p>You're my everything, and I'm so grateful to be by your side. Here's to you, my love may this year be as extraordinary as you are. Happy Birthday, from the depths of my soul.</p>
+                <p class="signature">Forever yours,<br>[Pinnochio❤️]</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-message">
+            <p>Thank you for being you. Wishing you the happiest of birthdays, today and always.</p>
+            <p>With all my love,</p>
+            <p>[Pinnochio❤️]</p>
+        </div>
+    </footer>
+
+    <!-- Music Player -->
+    <div class="music-player touch-optimized">
+        <span class="song-title">Pinnochio's Song</span>
+        <button class="music-control" id="playBtn">
+            <i class="fas fa-play"></i>
+        </button>
+        <button class="music-control" id="pauseBtn" style="display: none;">
+            <i class="fas fa-pause"></i>
+        </button>
+    </div>
+
+    <!-- Hidden Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="SZA - Snooze (Audio).mp3" type="audio/mpeg">
+         Your browser does not support audio
+    </audio>
+
+    <script>
+        // Music Player Functionality
+        const bgMusic = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+
+        // Auto-play music after user interaction
+        document.body.addEventListener('click', function() {
+            if (bgMusic.paused) {
+                bgMusic.play().catch(e => console.log(e));
+                playBtn.style.display = 'none';
+                pauseBtn.style.display = 'flex';
+            }
+        }, { once: true });
+
+        playBtn.addEventListener('click', function() {
+            bgMusic.play();
+            playBtn.style.display = 'none';
+            pauseBtn.style.display = 'flex';
+        });
+
+        pauseBtn.addEventListener('click', function() {
+            bgMusic.pause();
+            pauseBtn.style.display = 'none';
+            playBtn.style.display = 'flex';
+        });
+
+        // Video Play/Pause Toggle for all videos
+        document.querySelectorAll('.play-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Get the video container
+                const videoContainer = this.closest('.video-container');
+                const video = videoContainer.querySelector('.journey-video');
+                
+                if (video) {
+                    const icon = this.querySelector('i');
+                    
+                    if (video.paused) {
+                        video.play();
+                        icon.className = 'fas fa-pause';
+                    } else {
+                        video.pause();
+                        icon.className = 'fas fa-play';
+                    }
+                }
+            });
+        });
+
+        // Create additional floating elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const emojis = ['❤️', '💖', '🌸', '🌺', '🌹', '💐', '✨'];
+            const floatingCount = window.innerWidth < 480 ? 8 : 15;
+            
+            for (let i = 0; i < floatingCount; i++) {
+                const element = document.createElement('div');
+                element.className = Math.random() > 0.5 ? 'floating heart' : 'floating flower';
+                element.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                element.style.left = Math.random() * 100 + '%';
+                element.style.top = Math.random() * 100 + '%';
+                element.style.animationDelay = Math.random() * 5 + 's';
+                element.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                element.style.opacity = Math.random() * 0.5 + 0.3;
+                document.body.appendChild(element);
+            }
+        });
+        
+        // Improve touch experience
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            document.body.classList.add('resize-animation-stopper');
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                document.body.classList.remove('resize-animation-stopper');
+            }, 400);
+        });
+    </script>
+   
+</body>
+</html>
